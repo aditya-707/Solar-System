@@ -1,0 +1,277 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Updated button styles */
+.button {
+    min-width: 120px;
+    position: relative;
+    cursor: pointer;
+    padding: 12px 17px;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: radial-gradient(
+        ellipse at bottom,
+        rgba(71, 81, 92, 1) 0%,
+        rgba(11, 21, 30, 1) 45%
+    );
+    color: rgba(255, 255, 255, 0.66);
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.button::before {
+    content: "";
+    width: 70%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0.2;
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.button:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1) translateY(-3px);
+}
+
+.button:hover::before {
+    opacity: 1;
+}
+
+.info-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    max-width: 300px;
+    display: none;
+    z-index: 1000;
+}
+
+.info-panel h2 {
+    margin-top: 0;
+    color: #ffd700;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.info-table td {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-table td:first-child {
+    font-weight: bold;
+    color: #88aaff;
+}
+
+.zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.zoom-controls button {
+    min-width: 50px;
+    min-height: 50px;
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: radial-gradient(
+        ellipse at bottom,
+        rgba(71, 81, 92, 1) 0%,
+        rgba(11, 21, 30, 1) 45%
+    );
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 24px;
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom-controls button::before {
+    content: "";
+    width: 70%;
+    height: 1px;
+    position: absolute;
+    bottom: 5px;
+    left: 15%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0.2;
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.zoom-controls button:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1) translateY(-3px);
+}
+
+.zoom-controls button:hover::before {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        bottom: 10px;
+        padding: 8px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+    }
+    
+    .button {
+        min-width: 100px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .info-panel {
+        top: 10px;
+        left: 10px;
+        padding: 10px;
+        font-size: 12px;
+        max-width: 200px;
+    }
+    
+    .zoom-controls {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .zoom-controls button {
+        min-width: 40px;
+        min-height: 40px;
+        font-size: 20px;
+    }
+}
+
+.music-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.mute-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mute-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.sound-wave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.dot:nth-child(1) {
+    height: 8px;
+    animation: soundWave 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    height: 12px;
+    animation: soundWave 1.5s infinite ease-in-out 0.2s;
+}
+
+.dot:nth-child(3) {
+    height: 16px;
+    animation: soundWave 1.5s infinite ease-in-out 0.4s;
+}
+
+@keyframes soundWave {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.3);
+    }
+}
+
+.muted .dot {
+    animation: none;
+    height: 8px;
+    transform: scaleY(1);
+}
+
+@media (max-width: 600px) {
+    .music-control {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .mute-button {
+        width: 35px;
+        height: 35px;
+    }
+}

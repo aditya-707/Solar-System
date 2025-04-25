@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Visualization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info-panel" id="info-panel">
+        <h2 id="info-title">Planet Info</h2>
+        <table class="info-table" id="info-table"></table>
+    </div>
+    
+    <div class="controls">
+        <button class="button" id="speed-slower">Slower</button>
+        <button class="button" id="speed-reset">Reset Speed</button>
+        <button class="button" id="speed-faster">Faster</button>
+        <button class="button" id="toggle-orbits">Toggle Orbits</button>
+        <button class="button" id="reset-view">Reset View</button>
+    </div>
+    
+    <div class="zoom-controls">
+        <button class="button" id="zoom-in">+</button>
+        <button class="button" id="zoom-out">-</button>
+    </div>
+    
+    <div class="music-control">
+        <button id="mute-toggle" class="mute-button" title="Sound is muted - click to enable">
+            <div class="sound-wave">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </button>
+        <audio id="bg-music" loop autoplay>
+            <source src="calm-space-music-312291.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
