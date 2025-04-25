@@ -219,7 +219,7 @@ window.onload = function() {
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
     
-    // Enhanced planet data with increased speed
+    // planet data with speed
     const planetData = {
         sun: {
             radius: 10,
@@ -235,10 +235,10 @@ window.onload = function() {
         mercury: { 
             radius: 1, 
             distance: 20, 
-            speed: 0.02, // Increased speed
+            speed: 0.02,
             color: 0xaaaaaa,
             tilt: 0.035,
-            rotationSpeed: 0.008, // Increased rotation
+            rotationSpeed: 0.008,
             info: {
                 Type: "Terrestrial Planet",
                 Diameter: "4,880 km",
@@ -251,10 +251,10 @@ window.onload = function() {
         venus: { 
             radius: 1.8, 
             distance: 30, 
-            speed: 0.016, // Increased speed
+            speed: 0.016,
             color: 0xe6bc71,
             tilt: 177.3,
-            rotationSpeed: 0.007, // Increased rotation
+            rotationSpeed: 0.007,
             info: {
                 Type: "Terrestrial Planet",
                 Diameter: "12,104 km",
@@ -267,10 +267,10 @@ window.onload = function() {
         earth: { 
             radius: 2, 
             distance: 40, 
-            speed: 0.013, // Increased speed
+            speed: 0.013,
             color: 0x2244bb,
             tilt: 23.4,
-            rotationSpeed: 0.025, // Increased rotation
+            rotationSpeed: 0.025,
             info: {
                 Type: "Terrestrial Planet",
                 Diameter: "12,742 km",
@@ -283,10 +283,10 @@ window.onload = function() {
         mars: { 
             radius: 1.5, 
             distance: 55, 
-            speed: 0.01, // Increased speed
+            speed: 0.01,
             color: 0xc62828,
             tilt: 25.2,
-            rotationSpeed: 0.02, // Increased rotation
+            rotationSpeed: 0.02,
             info: {
                 Type: "Terrestrial Planet",
                 Diameter: "6,779 km",
@@ -299,10 +299,10 @@ window.onload = function() {
         jupiter: { 
             radius: 5, 
             distance: 80, 
-            speed: 0.006, // Increased speed
+            speed: 0.006,
             color: 0xe0ae6f,
             tilt: 3.1,
-            rotationSpeed: 0.04, // Increased rotation
+            rotationSpeed: 0.04,
             info: {
                 Type: "Gas Giant",
                 Diameter: "139,820 km",
@@ -315,10 +315,10 @@ window.onload = function() {
         saturn: { 
             radius: 4.5, 
             distance: 110, 
-            speed: 0.003, // Increased speed
+            speed: 0.003,
             color: 0xf4e9bd,
             tilt: 26.7,
-            rotationSpeed: 0.035, // Increased rotation
+            rotationSpeed: 0.035,
             info: {
                 Type: "Gas Giant",
                 Diameter: "116,460 km",
@@ -330,7 +330,7 @@ window.onload = function() {
         }
     };
     
-    // Create enhanced sun with corona effect
+    // corona effect
     const sunGroup = new THREE.Object3D();
     scene.add(sunGroup);
     
@@ -344,7 +344,7 @@ window.onload = function() {
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     sunGroup.add(sun);
     
-    // Add sun glow layers
+    // Sun glow layers
     const sunGlow1 = createSolarGlow(planetData.sun.radius * 1.2, 0xffdd00);
     const sunGlow2 = createSolarGlow(planetData.sun.radius * 1.5, 0xffaa00);
     const sunGlow3 = createSolarGlow(planetData.sun.radius * 2, 0xff7700);
@@ -357,7 +357,7 @@ window.onload = function() {
     sunLight.position.set(0, 0, 0);
     scene.add(sunLight);
     
-    // Create planets and orbits
+    // Planets and orbits
     const planets = {};
     const orbits = {};
     const planetGroups = {};
@@ -365,7 +365,7 @@ window.onload = function() {
     for (const [name, data] of Object.entries(planetData)) {
         if (name === 'sun') continue;
         
-        // Create planet group (for tilting)
+        // Planet group (for tilting)
         const planetGroup = new THREE.Object3D();
         scene.add(planetGroup);
         planetGroups[name] = planetGroup;
@@ -635,7 +635,6 @@ window.onload = function() {
         // Rotate the sun
         sun.rotation.y += 0.005 * speedFactor;
         
-        // Update planet positions
         for (const [name, data] of Object.entries(planetData)) {
             if (name === 'sun') continue;
             
@@ -646,15 +645,13 @@ window.onload = function() {
                 // Update planet orbit
                 planetGroup.rotation.y += data.speed * speedFactor * (deltaTime * 10);
                 
-                // Update planet rotation
                 planet.rotation.y += data.rotationSpeed * speedFactor * (deltaTime * 10);
             }
         }
         
-        // Update Earth's moon
         if (planets['earth'] && planets['moon'] && planetGroups['earth']) {
             moonGroup.position.copy(planetGroups['earth'].position);
-            moonGroup.rotation.y += 0.03 * speedFactor * (deltaTime * 10); // Increased moon speed
+            moonGroup.rotation.y += 0.03 * speedFactor * (deltaTime * 10);
         }
         
         // Rotate asteroid belt
